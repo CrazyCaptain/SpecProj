@@ -1,0 +1,34 @@
+﻿@model SpecApp.Models.ClientEmployee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee Details</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Employee Fullname: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName), @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Client:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-warning" onclick="location.href='@Url.Action("Edit", "ClientEmployee", new { id = Model.ClientEmployeeId })';return false;">Update Details</button>
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "ClientEmployee")';return false;">Back to List</button>
+</p>
