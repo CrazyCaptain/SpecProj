@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SpecApp.Models.ClientEmployee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Employees</h2>
+
+<p>
+    <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "ClientEmployee")';return false;">Add an Employee</button>
+    <button class="btn btn-primary"  onclick="location.href='@Url.Action("Index", "Client")';return false;">View Clients</button>
+</p>
+
+    <table class="table table-striped table-condensed table-bordered">
+        <tr>
+            <th class="text-center">Employee Fullname</th>
+            <th class="text-center">Client</th>
+            <th class="text-center">Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.LastName, @item.FirstName</td>
+                <td class="text-center">@item.Client.Name</td>
+                <td class="text-center">
+                    <button class="btn btn-info" onclick="location.href='@Url.Action("Edit", "ClientEmployee", new { id = item.ClientEmployeeId })';return false;">Edit Details</button>
+                    <button class="btn btn-warning" onclick="location.href='@Url.Action("Details", "ClientEmployee", new { id = item.ClientEmployeeId })';return false;">View Details</button>
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ClientEmployee", new { id = item.ClientEmployeeId })';return false;">Delete Employee</button>
+                </td>
+            </tr>
+        }
+    </table>
+

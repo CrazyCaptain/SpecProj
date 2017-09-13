@@ -5,14 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Client Details</h2>
 
 <div>
-    <h4>Client</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Client Name:
         </dt>
 
         <dd>
@@ -20,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Email Address:
         </dt>
 
         <dd>
@@ -30,6 +29,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-warning" onclick="location.href='@Url.Action("Edit", "Client", new { id = Model.ClientId })';return false;">Update Details</button>
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Client")';return false;">Back to List</button>
+
 </p>
