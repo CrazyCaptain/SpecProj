@@ -28,6 +28,8 @@
                     <button class="btn btn-info" onclick="location.href='@Url.Action("Edit", "Client", new { id = item.ClientId })';return false;">Update Details</button>
                     <button class="btn btn-warning" onclick="location.href='@Url.Action("Details", "Client", new { id = item.ClientId })';return false;">View Details</button>
                     <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Client", new { id = item.ClientId })';return false;">Delete Client</button>
+                    @Html.ActionLink("Pay with Paypal Account", "PaymentWithPaypal", "Paypal")
+                    @Html.ActionLink("Pay Direct With Credit Card", "PaymentWithCreditCard", "Paypal")
                 </td>
             </tr>
         }
