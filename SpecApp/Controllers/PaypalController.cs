@@ -17,7 +17,6 @@ namespace SpecApp.Controllers
 
        
         //paypal payment
-
         public ActionResult PaymentWithPaypal()
         {
             APIContext apiContext = Configuration.GetAPIContext();
@@ -106,11 +105,22 @@ namespace SpecApp.Controllers
                 return_url = redirectUrl
             };
 
+            double total = 0;
+            itemList.items.ForEach(i =>
+            {
+                double value = 0;
+                double.TryParse(i.price, out value);
+                if (value != 0)
+                {
+                    total += value;
+                }
+            });
+
             var details = new Details()
             {
                 tax = "1",
                 shipping = "1",
-                subtotal = "18"
+                subtotal = total.ToString()
             };
             var amount = new Amount()
             {
